@@ -15,6 +15,7 @@
 
 #import "GMGifTableViewCell.h"
 
+static NSString * const GMDefaultSearchTerm = @"kitten";
 static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
 
 @implementation GMGifTableViewController
@@ -23,14 +24,9 @@ static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.tableView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
     
-    __weak __typeof(self) weakSelf = self;
-    [[GMGiphyAPIClient sharedClient] searchGif:@"cat dog" completionHandler:^(id json, NSError *error) {
-        GMGifParser *parser = [[GMGifParser alloc] init];
-        weakSelf.gifs = [parser parseGifsFromDictionary:json];
-    }];
+    [self searchForGif:GMDefaultSearchTerm];
 }
 
 #pragma mark - Accessors
@@ -42,14 +38,24 @@ static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
     }
 }
 
-#pragma mark - Table view data source
+#pragma mark - Private methods
+
+- (void)searchForGif:(NSString *)searchTerm {
+    __weak __typeof(self) weakSelf = self;
+    [[GMGiphyAPIClient sharedClient] searchGif:searchTerm completionHandler:^(id json, NSError *error) {
+        GMGifParser *parser = [[GMGifParser alloc] init];
+        weakSelf.gifs = [parser parseGifsFromDictionary:json];
+    }];
+}
+
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.gifs.count < 10 ? self.gifs.count : 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    GMGifTableViewCell *cell = (GMGifTableViewCell *)[tableView dequeueReusableCellWithIdentifier:GMGifCellReuseID forIndexPath:indexPath];
+    GMGifTableViewCell *cell = (GMGifTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:GMGifCellReuseID forIndexPath:indexPath];
     
     GMGif *gif = self.gifs[indexPath.row];
 
@@ -70,10 +76,28 @@ static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
     return cell;
 }
 
+#pragma mark - UITableViewDelegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     GMGif *gif = self.gifs[indexPath.row];
     
     [[UIPasteboard generalPasteboard] setString:gif.url.absoluteString];
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    if (![searchBar.text isEqualToString:@""]) {
+        [self searchForGif:searchBar.text];
+    }
 }
 
 @end
