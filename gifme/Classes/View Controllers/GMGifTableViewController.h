@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GMGifTableViewController : UITableViewController
+@interface GMGifTableViewController : UITableViewController <UISearchBarDelegate>
 
 @property (nonatomic, strong) NSArray *gifs;
 
