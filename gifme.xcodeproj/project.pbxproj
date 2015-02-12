@@ -13,10 +13,12 @@
 		555353AA1A8D04D400DC19CE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555353A81A8D04D400DC19CE /* LaunchScreen.xib */; };
 		555353B61A8D04D400DC19CE /* gifmeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 555353B51A8D04D400DC19CE /* gifmeTests.m */; };
 		555353C41A8D06CF00DC19CE /* GMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 555353C31A8D06CF00DC19CE /* GMAppDelegate.m */; };
-		555353C71A8D06D900DC19CE /* GMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 555353C61A8D06D900DC19CE /* GMViewController.m */; };
 		5557B3F61A8D12DF00DCBBBD /* GMGiphyAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557B3F51A8D12DF00DCBBBD /* GMGiphyAPIClient.m */; };
 		5557B3FA1A8D1AE800DCBBBD /* GMGifParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557B3F91A8D1AE800DCBBBD /* GMGifParser.m */; };
 		5557B3FD1A8D1AF900DCBBBD /* GMGif.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557B3FC1A8D1AF900DCBBBD /* GMGif.m */; };
+		556F87F51A8D36D500146FA9 /* GMGifTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 556F87F41A8D36D500146FA9 /* GMGifTableViewCell.m */; };
+		556F87FA1A8D3B4E00146FA9 /* AnimatedGIFImageSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 556F87F91A8D3B4E00146FA9 /* AnimatedGIFImageSerialization.m */; };
+		55A913991A8D33A600457FE0 /* GMGifTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A913981A8D33A600457FE0 /* GMGifTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,14 +43,18 @@
 		555353B51A8D04D400DC19CE /* gifmeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gifmeTests.m; sourceTree = "<group>"; };
 		555353C21A8D06CF00DC19CE /* GMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMAppDelegate.h; path = Classes/AppDelegate/GMAppDelegate.h; sourceTree = "<group>"; };
 		555353C31A8D06CF00DC19CE /* GMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMAppDelegate.m; path = Classes/AppDelegate/GMAppDelegate.m; sourceTree = "<group>"; };
-		555353C51A8D06D900DC19CE /* GMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMViewController.h; path = "Classes/View Controllers/GMViewController.h"; sourceTree = "<group>"; };
-		555353C61A8D06D900DC19CE /* GMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMViewController.m; path = "Classes/View Controllers/GMViewController.m"; sourceTree = "<group>"; };
 		5557B3F41A8D12DF00DCBBBD /* GMGiphyAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMGiphyAPIClient.h; path = Classes/Network/GMGiphyAPIClient.h; sourceTree = "<group>"; };
 		5557B3F51A8D12DF00DCBBBD /* GMGiphyAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMGiphyAPIClient.m; path = Classes/Network/GMGiphyAPIClient.m; sourceTree = "<group>"; };
 		5557B3F81A8D1AE800DCBBBD /* GMGifParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMGifParser.h; path = Classes/Model/GMGifParser.h; sourceTree = "<group>"; };
 		5557B3F91A8D1AE800DCBBBD /* GMGifParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMGifParser.m; path = Classes/Model/GMGifParser.m; sourceTree = "<group>"; };
 		5557B3FB1A8D1AF900DCBBBD /* GMGif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMGif.h; path = Classes/Model/GMGif.h; sourceTree = "<group>"; };
 		5557B3FC1A8D1AF900DCBBBD /* GMGif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMGif.m; path = Classes/Model/GMGif.m; sourceTree = "<group>"; };
+		556F87F31A8D36D500146FA9 /* GMGifTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMGifTableViewCell.h; path = Classes/Views/GMGifTableViewCell.h; sourceTree = "<group>"; };
+		556F87F41A8D36D500146FA9 /* GMGifTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMGifTableViewCell.m; path = Classes/Views/GMGifTableViewCell.m; sourceTree = "<group>"; };
+		556F87F81A8D3B4E00146FA9 /* AnimatedGIFImageSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatedGIFImageSerialization.h; path = Classes/External/AnimatedGIFImageSerialization/AnimatedGIFImageSerialization.h; sourceTree = "<group>"; };
+		556F87F91A8D3B4E00146FA9 /* AnimatedGIFImageSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimatedGIFImageSerialization.m; path = Classes/External/AnimatedGIFImageSerialization/AnimatedGIFImageSerialization.m; sourceTree = "<group>"; };
+		55A913971A8D33A600457FE0 /* GMGifTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMGifTableViewController.h; path = "Classes/View Controllers/GMGifTableViewController.h"; sourceTree = "<group>"; };
+		55A913981A8D33A600457FE0 /* GMGifTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMGifTableViewController.m; path = "Classes/View Controllers/GMGifTableViewController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +134,10 @@
 			isa = PBXGroup;
 			children = (
 				555353C11A8D06A100DC19CE /* AppDelegate */,
+				556F87F61A8D3B1000146FA9 /* External */,
 				5557B3F71A8D1AD200DCBBBD /* Model */,
 				5557B3F31A8D12D100DCBBBD /* Network */,
+				556F87F21A8D36A500146FA9 /* Views */,
 				555353C01A8D069100DC19CE /* View Controllers */,
 			);
 			name = Classes;
@@ -138,8 +146,8 @@
 		555353C01A8D069100DC19CE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				555353C51A8D06D900DC19CE /* GMViewController.h */,
-				555353C61A8D06D900DC19CE /* GMViewController.m */,
+				55A913971A8D33A600457FE0 /* GMGifTableViewController.h */,
+				55A913981A8D33A600457FE0 /* GMGifTableViewController.m */,
 				555353A31A8D04D400DC19CE /* Main.storyboard */,
 			);
 			name = "View Controllers";
@@ -172,6 +180,32 @@
 				5557B3FC1A8D1AF900DCBBBD /* GMGif.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		556F87F21A8D36A500146FA9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				556F87F31A8D36D500146FA9 /* GMGifTableViewCell.h */,
+				556F87F41A8D36D500146FA9 /* GMGifTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		556F87F61A8D3B1000146FA9 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				556F87F71A8D3B4100146FA9 /* AnimatedGIFImageSerialization */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		556F87F71A8D3B4100146FA9 /* AnimatedGIFImageSerialization */ = {
+			isa = PBXGroup;
+			children = (
+				556F87F81A8D3B4E00146FA9 /* AnimatedGIFImageSerialization.h */,
+				556F87F91A8D3B4E00146FA9 /* AnimatedGIFImageSerialization.m */,
+			);
+			name = AnimatedGIFImageSerialization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,8 +311,10 @@
 				5557B3FD1A8D1AF900DCBBBD /* GMGif.m in Sources */,
 				555353C41A8D06CF00DC19CE /* GMAppDelegate.m in Sources */,
 				5557B3FA1A8D1AE800DCBBBD /* GMGifParser.m in Sources */,
-				555353C71A8D06D900DC19CE /* GMViewController.m in Sources */,
 				5553539C1A8D04D400DC19CE /* main.m in Sources */,
+				556F87FA1A8D3B4E00146FA9 /* AnimatedGIFImageSerialization.m in Sources */,
+				556F87F51A8D36D500146FA9 /* GMGifTableViewCell.m in Sources */,
+				55A913991A8D33A600457FE0 /* GMGifTableViewController.m in Sources */,
 				5557B3F61A8D12DF00DCBBBD /* GMGiphyAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,7 +20,10 @@
         NSDictionary *gifDict = gifDicts[i];
         
         GMGif *gif = [[GMGif alloc] init];
-        gif.url = gifDict[@"bitly_gif_url"];
+        
+        NSString *urlString = [gifDict valueForKeyPath:@"images.fixed_width.url"];
+        gif.url = [NSURL URLWithString:urlString];
+        
         [gifs addObject:gif];
     }
     
