@@ -7,6 +7,7 @@
 //
 
 #import "GMViewController.h"
+#import "GMGiphyAPIClient.h"
 
 @interface GMViewController ()
 
@@ -16,7 +17,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [[GMGiphyAPIClient sharedClient] fetchTrendingGifs:^(id json, NSError *error) {
+        NSLog(@"Trending JSON: %@", json);
+    }];
+    
+    [[GMGiphyAPIClient sharedClient] searchGif:@"cat dog" completionHandler:^(id json, NSError *error) {
+        NSLog(@"Search JSON: %@", json);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
