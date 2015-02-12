@@ -8,6 +8,7 @@
 
 #import "GMViewController.h"
 #import "GMGiphyAPIClient.h"
+#import "GMGifParser.h"
 
 @interface GMViewController ()
 
@@ -18,12 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[GMGiphyAPIClient sharedClient] fetchTrendingGifs:^(id json, NSError *error) {
-        NSLog(@"Trending JSON: %@", json);
-    }];
-    
     [[GMGiphyAPIClient sharedClient] searchGif:@"cat dog" completionHandler:^(id json, NSError *error) {
-        NSLog(@"Search JSON: %@", json);
+        GMGifParser *parser = [[GMGifParser alloc] init];
+        [parser parseGifsFromDictionary:json];
     }];
 }
 
