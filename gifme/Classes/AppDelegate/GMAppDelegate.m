@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 William Kalish. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "GMAppDelegate.h"
 
-@interface AppDelegate ()
+@interface GMAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation GMAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

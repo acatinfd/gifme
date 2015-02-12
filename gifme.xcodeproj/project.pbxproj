@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5553539C1A8D04D400DC19CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5553539B1A8D04D400DC19CE /* main.m */; };
-		5553539F1A8D04D400DC19CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5553539E1A8D04D400DC19CE /* AppDelegate.m */; };
-		555353A21A8D04D400DC19CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 555353A11A8D04D400DC19CE /* ViewController.m */; };
 		555353A51A8D04D400DC19CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 555353A31A8D04D400DC19CE /* Main.storyboard */; };
 		555353A71A8D04D400DC19CE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 555353A61A8D04D400DC19CE /* Images.xcassets */; };
 		555353AA1A8D04D400DC19CE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555353A81A8D04D400DC19CE /* LaunchScreen.xib */; };
 		555353B61A8D04D400DC19CE /* gifmeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 555353B51A8D04D400DC19CE /* gifmeTests.m */; };
+		555353C41A8D06CF00DC19CE /* GMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 555353C31A8D06CF00DC19CE /* GMAppDelegate.m */; };
+		555353C71A8D06D900DC19CE /* GMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 555353C61A8D06D900DC19CE /* GMViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,16 +30,16 @@
 		555353961A8D04D400DC19CE /* gifme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gifme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5553539A1A8D04D400DC19CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5553539B1A8D04D400DC19CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5553539D1A8D04D400DC19CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5553539E1A8D04D400DC19CE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		555353A01A8D04D400DC19CE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		555353A11A8D04D400DC19CE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		555353A41A8D04D400DC19CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		555353A61A8D04D400DC19CE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		555353A91A8D04D400DC19CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		555353AF1A8D04D400DC19CE /* gifmeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gifmeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		555353B41A8D04D400DC19CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		555353B51A8D04D400DC19CE /* gifmeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gifmeTests.m; sourceTree = "<group>"; };
+		555353C21A8D06CF00DC19CE /* GMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMAppDelegate.h; path = Classes/AppDelegate/GMAppDelegate.h; sourceTree = "<group>"; };
+		555353C31A8D06CF00DC19CE /* GMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMAppDelegate.m; path = Classes/AppDelegate/GMAppDelegate.m; sourceTree = "<group>"; };
+		555353C51A8D06D900DC19CE /* GMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMViewController.h; path = "Classes/View Controllers/GMViewController.h"; sourceTree = "<group>"; };
+		555353C61A8D06D900DC19CE /* GMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMViewController.m; path = "Classes/View Controllers/GMViewController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,11 +81,7 @@
 		555353981A8D04D400DC19CE /* gifme */ = {
 			isa = PBXGroup;
 			children = (
-				5553539D1A8D04D400DC19CE /* AppDelegate.h */,
-				5553539E1A8D04D400DC19CE /* AppDelegate.m */,
-				555353A01A8D04D400DC19CE /* ViewController.h */,
-				555353A11A8D04D400DC19CE /* ViewController.m */,
-				555353A31A8D04D400DC19CE /* Main.storyboard */,
+				555353BF1A8D067B00DC19CE /* Classes */,
 				555353A61A8D04D400DC19CE /* Images.xcassets */,
 				555353A81A8D04D400DC19CE /* LaunchScreen.xib */,
 				555353991A8D04D400DC19CE /* Supporting Files */,
@@ -117,6 +113,34 @@
 				555353B41A8D04D400DC19CE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		555353BF1A8D067B00DC19CE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				555353C11A8D06A100DC19CE /* AppDelegate */,
+				555353C01A8D069100DC19CE /* View Controllers */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		555353C01A8D069100DC19CE /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				555353C51A8D06D900DC19CE /* GMViewController.h */,
+				555353C61A8D06D900DC19CE /* GMViewController.m */,
+				555353A31A8D04D400DC19CE /* Main.storyboard */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		555353C11A8D06A100DC19CE /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				555353C21A8D06CF00DC19CE /* GMAppDelegate.h */,
+				555353C31A8D06CF00DC19CE /* GMAppDelegate.m */,
+			);
+			name = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,8 +243,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				555353A21A8D04D400DC19CE /* ViewController.m in Sources */,
-				5553539F1A8D04D400DC19CE /* AppDelegate.m in Sources */,
+				555353C41A8D06CF00DC19CE /* GMAppDelegate.m in Sources */,
+				555353C71A8D06D900DC19CE /* GMViewController.m in Sources */,
 				5553539C1A8D04D400DC19CE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +438,7 @@
 				555353BB1A8D04D400DC19CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		555353BC1A8D04D400DC19CE /* Build configuration list for PBXNativeTarget "gifmeTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +447,7 @@
 				555353BE1A8D04D400DC19CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

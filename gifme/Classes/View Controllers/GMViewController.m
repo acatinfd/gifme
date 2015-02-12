@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 William Kalish. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "GMViewController.h"
 
-@interface ViewController ()
+@interface GMViewController ()
 
 @end
 
-@implementation ViewController
+@implementation GMViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
