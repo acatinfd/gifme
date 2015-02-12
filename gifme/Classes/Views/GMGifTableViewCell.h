@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  GMGifTableViewCell.h
 //  gifme
 //
 //  Created by William Kalish on 2/12/15.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GMViewController : UIViewController
+@interface GMGifTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *gifImageView;
 
 @end
-

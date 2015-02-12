@@ -39,11 +39,16 @@
     NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (completionHandler) {
             if (error) {
-                completionHandler(nil, error);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionHandler(nil, error);
+                });
             } else {
                 NSError *jsonError = nil;
                 NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-                completionHandler(json, jsonError);
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionHandler(json, jsonError);
+                });
             }
         }
     }];
