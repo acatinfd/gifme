@@ -11,7 +11,5 @@
 @interface GMGif : NSObject
 
 @property (nonatomic, strong) NSURL *url;
-@property (nonatomic, strong) NSData *data;
-@property (nonatomic) BOOL isLoading;
 
 @end

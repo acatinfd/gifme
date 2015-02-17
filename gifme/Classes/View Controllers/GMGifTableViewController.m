@@ -57,21 +57,12 @@ static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
     
     GMGif *gif = self.gifs[indexPath.row];
 
-    if (!gif.data && !gif.isLoading) {
-//        NSData *gifData = [NSData dataWithContentsOfURL:gif.url];
-//        cell.gifImageView.image = [UIImage imageWithData:gifData];
-        gif.isLoading =  YES;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void){
-            gif.data = [NSData dataWithContentsOfURL:gif.url];
-            dispatch_async(dispatch_get_main_queue(), ^(void){
-                cell.gifImageView.image = [UIImage imageWithData:gif.data];
-                gif.isLoading = NO;
-            });
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void){
+        NSData *gifData = [NSData dataWithContentsOfURL:gif.url];
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            cell.gifImageView.image = [UIImage imageWithData:gifData];
         });
-    }
-    else {
-        cell.gifImageView.image = [UIImage imageWithData:gif.data];
-    }
+    });
     
     return cell;
 }

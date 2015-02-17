@@ -21,6 +21,11 @@
     dispatch_once(&onceToken, ^{
         _sharedManager = [[GMGiphyAPIClient alloc] init];
         _sharedManager.baseURL = [NSURL URLWithString:@"http://api.giphy.com/v1/gifs/"];
+        
+        NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024
+                                                          diskCapacity:20 * 1024 * 1024
+                                                              diskPath:nil];
+        [NSURLCache setSharedURLCache:cache];
     });
     return _sharedManager;
 }
