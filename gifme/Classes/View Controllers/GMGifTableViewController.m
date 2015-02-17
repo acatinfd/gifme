@@ -24,7 +24,7 @@ static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
+    //self.tableView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
     
     [self searchForGif:GMDefaultSearchTerm];
 }
@@ -61,7 +61,7 @@ static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
 
     if (!gif.data && !gif.isLoading) {
         gif.isLoading =  YES;
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void){
             gif.data = [NSData dataWithContentsOfURL:gif.url];
             dispatch_async(dispatch_get_main_queue(), ^(void){
                 cell.gifImageView.image = [UIImage imageWithData:gif.data];
@@ -80,7 +80,7 @@ static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     GMGif *gif = self.gifs[indexPath.row];
-    
+
     [[UIPasteboard generalPasteboard] setString:gif.url.absoluteString];
 }
 
