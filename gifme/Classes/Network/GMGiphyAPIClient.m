@@ -7,6 +7,11 @@
 //
 
 #import "GMGiphyAPIClient.h"
+#import "GMGifParser.h"
+
+@interface GMGiphyAPIClient ()
+@property (nonatomic, strong) NSURL *baseURL;
+@end
 
 @implementation GMGiphyAPIClient
 
@@ -15,26 +20,37 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedManager = [[GMGiphyAPIClient alloc] init];
+        _sharedManager.baseURL = [NSURL URLWithString:@"http://api.giphy.com/v1/gifs/"];
     });
     return _sharedManager;
 }
 
-- (void)fetchTrendingGifs:(void (^)(id json, NSError* error))completionHandler {
-    NSURL *url = [NSURL URLWithString:@"http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC"];
+- (void)fetchTrendingGifs:(void (^)(NSArray *gifs, NSError* error))completionHandler {
+    NSURL *url = [NSURL URLWithString:@"trending" relativeToURL:self.baseURL];
     [self fetchGifsWithURL:url completionHandler:completionHandler];
 }
 
-- (void)searchGif:(NSString *)searchTerm completionHandler:(void (^)(id json, NSError* error))completionHandler {
+- (void)searchGif:(NSString *)searchTerm completionHandler:(void (^)(NSArray *gifs, NSError* error))completionHandler {
     NSString *urlSafeSearchTerm = [searchTerm stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *urlString = [NSString stringWithFormat:@"http://api.giphy.com/v1/gifs/search?q=%@&api_key=dc6zaTOxFJmzC", urlSafeSearchTerm];
-    NSURL *url = [NSURL URLWithString:urlString];
+    NSString *searchEndpoint = [NSString stringWithFormat:@"search?q=%@", urlSafeSearchTerm];
+    NSURL *url = [NSURL URLWithString:searchEndpoint relativeToURL:self.baseURL];
     
     [self fetchGifsWithURL:url completionHandler:completionHandler];
 }
 
 - (void)fetchGifsWithURL:(NSURL *)url completionHandler:(void (^)(id json, NSError* error))completionHandler {
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:self.baseURL];
     
+    NSString *apiKey = @"api_key=dc6zaTOxFJmzC";
+    if (urlComponents.query) {
+        urlComponents.query = [NSString stringWithFormat:@"%@&%@", urlComponents.query, apiKey];
+    } else {
+        urlComponents.query = apiKey;
+    }
+    
+    NSURL *apiURL = urlComponents.URL;
+    NSURLRequest *request = [NSURLRequest requestWithURL:apiURL];
+
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (completionHandler) {
@@ -44,11 +60,22 @@
                 });
             } else {
                 NSError *jsonError = nil;
-                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
+                                                                     options:NSJSONReadingAllowFragments
+                                                                       error:&jsonError];
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completionHandler(json, jsonError);
-                });
+                if (jsonError) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completionHandler(nil, jsonError);
+                    });
+                } else {
+                    GMGifParser *parser = [[GMGifParser alloc] init];
+                    NSArray *gifs = [parser parseGifsFromDictionary:json];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completionHandler(gifs, nil);
+                    });
+                }
             }
         }
     }];
