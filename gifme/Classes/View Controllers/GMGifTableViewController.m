@@ -11,11 +11,11 @@
 #import "AnimatedGIFImageSerialization.h"
 
 #import "GMGiphyAPIClient.h"
-#import "GMGifParser.h"
+#import "GMGif.h"
 
 #import "GMGifTableViewCell.h"
 
-static NSString * const GMDefaultSearchTerm = @"kitten";
+static NSString * const GMDefaultSearchTerm = @"cats";
 static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
 
 @implementation GMGifTableViewController
@@ -24,7 +24,6 @@ static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.tableView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
     
     [self searchForGif:GMDefaultSearchTerm];
 }
@@ -42,9 +41,8 @@ static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
 
 - (void)searchForGif:(NSString *)searchTerm {
     __weak __typeof(self) weakSelf = self;
-    [[GMGiphyAPIClient sharedClient] searchGif:searchTerm completionHandler:^(id json, NSError *error) {
-        GMGifParser *parser = [[GMGifParser alloc] init];
-        weakSelf.gifs = [parser parseGifsFromDictionary:json];
+    [[GMGiphyAPIClient sharedClient] searchGif:searchTerm completionHandler:^(NSArray *gifs, NSError *error) {
+        weakSelf.gifs = gifs;
     }];
 }
 
@@ -60,8 +58,10 @@ static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
     GMGif *gif = self.gifs[indexPath.row];
 
     if (!gif.data && !gif.isLoading) {
+//        NSData *gifData = [NSData dataWithContentsOfURL:gif.url];
+//        cell.gifImageView.image = [UIImage imageWithData:gifData];
         gif.isLoading =  YES;
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void){
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void){
             gif.data = [NSData dataWithContentsOfURL:gif.url];
             dispatch_async(dispatch_get_main_queue(), ^(void){
                 cell.gifImageView.image = [UIImage imageWithData:gif.data];
@@ -92,9 +92,7 @@ static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
-}
 
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
     if (![searchBar.text isEqualToString:@""]) {
         [self searchForGif:searchBar.text];
     }

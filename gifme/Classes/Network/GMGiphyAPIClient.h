@@ -12,7 +12,7 @@
 
 + (instancetype)sharedClient;
 
-- (void)fetchTrendingGifs:(void (^)(id json, NSError* error))completionHandler;
-- (void)searchGif:(NSString *)searchTerm completionHandler:(void (^)(id json, NSError* error))completionHandler;
+- (void)fetchTrendingGifs:(void (^)(NSArray *gif, NSError* error))completionHandler;
+- (void)searchGif:(NSString *)searchTerm completionHandler:(void (^)(NSArray *gifs, NSError* error))completionHandler;
 
 @end
