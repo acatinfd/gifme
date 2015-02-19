@@ -9,14 +9,8 @@
 #import "GMGifTableViewController.h"
 
 #import "AnimatedGIFImageSerialization.h"
-
 #import "GMGiphyAPIClient.h"
-#import "GMGif.h"
-
 #import "GMGifTableViewCell.h"
-
-static NSString * const GMDefaultSearchTerm = @"cats";
-static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
 
 @implementation GMGifTableViewController
 
@@ -24,69 +18,40 @@ static NSString * const GMGifCellReuseID = @"GMGifCellReuseID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self searchForGif:GMDefaultSearchTerm];
 }
 
 #pragma mark - Accessors
 
-- (void)setGifs:(NSArray *)gifs {
-    if (_gifs != gifs) {
-        _gifs = gifs;
-        [self.tableView reloadData];
-    }
-}
-
 #pragma mark - Private methods
-
-- (void)searchForGif:(NSString *)searchTerm {
-    __weak __typeof(self) weakSelf = self;
-    [[GMGiphyAPIClient sharedClient] searchGif:searchTerm completionHandler:^(NSArray *gifs, NSError *error) {
-        weakSelf.gifs = gifs;
-    }];
-}
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.gifs.count < 10 ? self.gifs.count : 10;
+    //@TODO: Return GIF count.
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    GMGifTableViewCell *cell = (GMGifTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:GMGifCellReuseID forIndexPath:indexPath];
-    
-    GMGif *gif = self.gifs[indexPath.row];
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void){
-        NSData *gifData = [NSData dataWithContentsOfURL:gif.url];
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            cell.gifImageView.image = [UIImage imageWithData:gifData];
-        });
-    });
-    
-    return cell;
+    //@TODO: Display a GIF cell.
+    return nil;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    GMGif *gif = self.gifs[indexPath.row];
-
-    [[UIPasteboard generalPasteboard] setString:gif.url.absoluteString];
+    //@TODO: Share selected GIF.
 }
 
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    [searchBar resignFirstResponder];
+    //@TODO: Dismiss Keyboard.
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [searchBar resignFirstResponder];
+    //@TODO: Dismiss Keyboard.
 
-    if (![searchBar.text isEqualToString:@""]) {
-        [self searchForGif:searchBar.text];
-    }
+    //@TODO: Search GIFs
 }
 
 @end

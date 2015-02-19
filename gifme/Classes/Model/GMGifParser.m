@@ -11,23 +11,8 @@
 @implementation GMGifParser
 
 - (NSArray *)parseGifsFromDictionary:(NSDictionary *)dict {
-    NSArray *gifDicts = dict[@"data"];
-    
-    NSMutableArray *gifs = [[NSMutableArray alloc] init];
-
-    // Why not use for-in loop?
-    for (int i = 0; i < gifDicts.count; i++) {
-        NSDictionary *gifDict = gifDicts[i];
-        
-        GMGif *gif = [[GMGif alloc] init];
-        
-        NSString *urlString = [gifDict valueForKeyPath:@"images.fixed_width.url"];
-        gif.url = [NSURL URLWithString:urlString];
-        
-        [gifs addObject:gif];
-    }
-    
-    return gifs;
+    //@TODO: Turn JSON dictionary into native objects.
+    return nil;
 }
 
 @end
