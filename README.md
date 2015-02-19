@@ -1,5 +1,5 @@
 # gifme
-Gifme is a demo gif sharing app for iOS. It is not intened for app store use. 
+Gifme is a demo gif sharing app for iOS. It is not intened for app store use. If you're looking to code along with us during the presentation, check out the branch 'presentation'.
 
 # Thanks To
 Giphy.com for the API (Powered by Giphy)
