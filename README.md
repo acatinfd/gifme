@@ -1,6 +1,10 @@
 # gifme
 Gifme is a demo gif sharing app for iOS. It is not intened for app store use. 
 
+# Thanks To
+Giphy.com for the API (Powered by Giphy)
+Mattt T. for the Native gif renderer 
+
 # Copyright
 The MIT License (MIT)
 
